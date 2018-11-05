@@ -14,7 +14,7 @@ def getform(request):
     """
     # 3-5 查询部分
     message = None
-    all_message = UserMessage.objects.filter(name='mtianyan', address='西安')
+    all_message = UserMessage.objects.filter(name='eddy', address='sweden')
 
     # if 判断是否存在数据
     if all_message:
@@ -58,25 +58,25 @@ def getform(request):
     # html表单部分
 
     # 此处对应html中的method="post"，表示我们只处理post请求
-    # if request.method == "POST":
-    #     # 就是取字典里key对应value值而已。取name，取不到默认空
-    #     name = request.POST.get('name', '')
-    #     message = request.POST.get('message', '')
-    #     address = request.POST.get('address', '')
-    #     email = request.POST.get('email', '')
-    #
-    #     # 实例化对象
-    #     user_message = UserMessage()
-    #
-    #     # 将html的值传入我们实例化的对象.
-    #     user_message.name = name
-    #     user_message.message = message
-    #     user_message.address = address
-    #     user_message.email = email
-    #     user_message.object_id = "ijkl"
-    #
-    #     # 调用save方法进行保存
-    #     user_message.save()
+    if request.method == "POST":
+        # 就是取字典里key对应value值而已。取name，取不到默认空
+        name = request.POST.get('name', '')
+        message = request.POST.get('message', '')
+        address = request.POST.get('address', '')
+        email = request.POST.get('email', '')
+
+        # 实例化对象
+        user_message = UserMessage()
+
+        # 将html的值传入我们实例化的对象.
+        user_message.name = name
+        user_message.message = message
+        user_message.address = address
+        user_message.email = email
+        user_message.object_id = "ijkl"
+
+        # 调用save方法进行保存
+        user_message.save()
 
     return render(request, 'message_form.html', {
         "my_message": message
@@ -94,3 +94,9 @@ def getform(request):
 #     names = [row[0] for row in cursor.fetchall()]
 #     db.close()
 
+def index(request):
+    all_message = UserMessage.objects.all()
+    print(all_message)
+    return render(request,'index.html',{
+        "all_messages": all_message
+    })

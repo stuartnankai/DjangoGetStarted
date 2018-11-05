@@ -16,9 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
-from apps.message.views import getform
+from apps.message.views import getform,index
 
+# Using /$ to stop the url
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^form/$', getform, name="form_new"),
+    # url(r'^index/$', index, name="index"),
 ]

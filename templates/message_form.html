@@ -7,14 +7,15 @@
 
 </head>
 <body>
+{#Find the url named form_new#}
 <form action="{% url "form_new" %}" method="post" class="smart-green">
     <h1>Message
         <span>Please leave your message.</span>
     </h1>
     <label>
         <span>Name :</span>
-        <input id="name" type="text" name="name"  value="{% ifequal my_message.name|slice:"8" "mtianyan1"|slice:"8" %}
-        对应中文昵称：天涯明月笙 {% else %} Can not find your nickname
+        <input id="name" type="text" name="name"  value="{% ifequal my_message.name|slice:"8" "eddy"|slice:"8" %}
+        Your nickname：eddy {% else %} Can not find your nickname
         {% endifequal %}" class="error" placeholder="Type your name"/>
         <div class="error-msg"></div>
     </label>
